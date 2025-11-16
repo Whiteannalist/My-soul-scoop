@@ -1,0 +1,125 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* เริ่มต้นมองไม่เห็น */
+        transform: translateY(10px); /* ขยับขึ้นเล็กน้อยเพื่อเพิ่มมิติ */
+    }
+    to {
+        opacity: 1; /* จบด้วยการแสดงผลชัดเจน */
+        transform: translateY(0);
+    }
+}
+
+.container {
+    /* ... (Style เดิมของคุณ) ... */
+    
+    /* เพิ่ม Animation Fade In */
+    animation: fadeIn 1s ease-out 0.3s forwards; /* ใช้เวลา 1 วินาที, เริ่มหลังจาก 0.2 วินาที, และคงสถานะสุดท้ายไว้ */
+    opacity: 0; /* ต้องกำหนดให้เริ่มต้นมองไม่เห็นก่อนที่ Animation จะเริ่ม */
+}
+
+body {
+    background-color: #ffffff; /* สีพื้นหลังขาวอมชมพู/เบจพาสเทล */
+    font-family: 'Prompt', sans-serif;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; ถูกลบออกเพื่อให้เนื้อหาเริ่มต้นจากด้านบนเมื่อเลื่อน */
+    align-items: flex-start; /* แก้ไขเพื่อให้เนื้อหาเริ่มจากด้านบน */
+    min-height: auto; /* แก้ไข: ให้ความสูงขยายได้ตามเนื้อหา (อนุญาตให้เลื่อน) */
+    margin: 0;
+    overflow-x: hidden; /* ป้องกันการเลื่อนด้านข้างเท่านั้น */
+    text-align: center;
+    padding: 32px; /* เพิ่ม padding ตามโค้ดเดิมที่ซ้ำกัน */
+}
+
+.container, .card {
+    /* ใช้ .card ที่อยู่ใน start.html เป็นตัวหลัก */
+    width: 820px;
+    max-width: 94vw;
+    background: #ffffff; /* ใช้สีขาวตาม var(--card) */
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 8px 30px rgba(255, 230, 230, 0.06);
+    /* min-height: 100vh; ควรถูกลบออกหากมี */
+}
+
+/* --- เส้นประ --- */
+.border-line {
+    border-top: 2px dashed #d5c8c6;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.top-border { margin-bottom: 40px; } 
+.bottom-border { margin-top: 40px; }
+
+/* --- ส่วนหัวข้อ/รูปภาพหลัก --- */
+#main-title-img {
+    width: 100%; 
+    max-width: 690px;
+    height: auto;
+}
+
+/* --- คำบรรยายใต้หัวข้อ --- */
+.subtitle {
+    color: #a4918e;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+}
+.th-text { font-size: 1.1em; margin-top: 15px; }
+.en-text { font-size: 1em; margin-bottom: 40px; }
+
+/* --- ปุ่ม Start/Controls --- */
+.start-button, button.btn {
+    background-color: #a4918e; 
+    color: #f7f3f1;
+    border: none;
+    border-radius: 999px; /* ใช้ 999px เพื่อให้ปุ่มโค้งมน */
+    padding: 10px 40px;
+    font-size: 1.5em;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.start-button:hover, button.btn:hover { background-color: #8c7875; }
+.start-button:active, button.btn:active { transform: scale(0.98); }
+
+/* --- Style ของ Quiz (จากโค้ดเดิมของคุณ) --- */
+:root{
+    --bg:#ffffff; 
+    --accent:#cc95aa; 
+    --muted:#7a5c48; 
+    --card:#ffffff; 
+    --pill:#f3e2ec;
+}
+
+.progress{height:12px; background:#eee; border-radius:999px; overflow:hidden; margin-bottom:18px}
+.progress>i{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--accent),#cc80a6)}
+
+.question-wrap{text-align:center}
+h1#q-title{font-size:1.8em; margin:6px 0 18px; color:#5e4637} /* ปรับขนาด h1/คำถามหลัก */
+p.lead{color:#e68cc6; margin:6px 0 20px}
+.choices{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+.choice{flex:0 0 46%; max-width:46%; min-width:220px; background:var(--pill); border-radius:999px; padding:14px 20px; cursor:pointer; border:2px solid transparent; transition:.18s}
+.choice:hover{transform:translateY(-4px); box-shadow:0 8px 22px rgba(20,30,20,0.04)}
+.choice.selected{background:linear-gradient(180deg,#fff,#f3e2ec); border-color:var(--accent)}
+.controls{display:flex; justify-content:center; gap:12px; margin-top:20px}
+/* ... (style อื่นๆ ของ control และ result เดิม) */
+
+
+/* --- การปรับขนาดรูปภาพผลลัพธ์ (Image Sizing Fix) --- */
+.result-img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* ใช้ class .result-image ใน script.js และจำกัดขนาดสูงสุด */
+.result-image { 
+    width: 100%; 
+    max-width: 450px; /* จำกัดความกว้างสูงสุดไว้ที่ 400px (คุณสามารถปรับเลขนี้ได้) */
+    height: auto;
+    border-radius: 16px; /* ใช้ 16px ตามที่คุณเคยตั้งค่า inline */
+}
